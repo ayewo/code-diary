@@ -3,7 +3,10 @@
 ---
 
 # January 30, 2023
-I came up with a basic `compose` file that makes the arcane `lima` error reproducible.
+I came up with a basic `compose` file that makes the arcane `lima` error reproducible and along the way:
+* I submitted a [PR](https://github.com/containerd/nerdctl/pull/1959);
+* opened an [issue](https://github.com/containerd/nerdctl/issues/1960) to make the error message clearer.
+
 ```bash
 cat compose.yaml
 version: '3'
