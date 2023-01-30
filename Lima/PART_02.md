@@ -758,8 +758,8 @@ Google turned up unrelated results for ["currently StdinOpen(-i) and Tty(-t) sho
 
 A search for the string ["currently StdinOpen(-i) and Tty(-t) should be same"](https://github.com/lima-vm/lima/search?q=currently+StdinOpen%28-i%29+and+Tty%28-t%29+should+be+same&type=commits) on the [`lima`](https://github.com/lima-vm/lima) repo yielded no results. A simpler search for the string ["Creating container"](https://github.com/lima-vm/lima/search?q=Creating+container&type=code) yielded irrelevant results but pointed me into the direction I should be looking.
 
-### GitHub's search is too basic 
-`lima` uses `nerdctl` internally so I visited the [`nerdctl`](https://github.com/containerd/nerdctl) project on Github but searching for ["currently StdinOpen(-i) and Tty(-t) should be same"](https://github.com/containerd/nerdctl/search?q=currently+StdinOpen%28-i%29+and+Tty%28-t%29+should+be+same) from there directly should have returned a [match](https://github.com/containerd/nerdctl/blob/2735dfc350a25f1857df8ca672723591a4cb4424/pkg/composer/up_service.go#L161) but gave no results. 
+## GitHub's Search is too Basic 
+`lima` uses `nerdctl` internally so I visited the [`nerdctl`](https://github.com/containerd/nerdctl) project on Github but searching for ["currently StdinOpen(-i) and Tty(-t) should be same"](https://github.com/containerd/nerdctl/search?q=currently+StdinOpen%28-i%29+and+Tty%28-t%29+should+be+same) from there directly should have returned a [**direct match**](https://github.com/containerd/nerdctl/blob/2735dfc350a25f1857df8ca672723591a4cb4424/pkg/composer/up_service.go#L161) but gave no results. 
 So, I used a simpler search string from the `nerdctl` output ["Creating container"](https://github.com/containerd/nerdctl/search?q=Creating+container&type=) which led to a multiple [matches](https://github.com/containerd/nerdctl/blob/2735dfc350a25f1857df8ca672723591a4cb4424/pkg/composer/up_service.go#L131-L133) in the same file.
 
 
