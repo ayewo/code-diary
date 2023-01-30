@@ -3,6 +3,8 @@
 * https://www.schutzwerk.com/en/blog/linux-container-intro/ 
 * https://jvns.ca/blog/2020/04/27/new-zine-how-containers-work/
 
+# January 23, 2023
+* [Pass AWS Credentials to a Docker Container](https://blogs.prama.ai/pass-aws-credentials-to-a-docker-container-6dcd4d605280)
 
 # January 9, 2023
 Came across this article: [Docker on MacOS is slow and how to fix it](https://www.paolomainardi.com/posts/docker-performance-macos/) via Changelog weekly newsletter on January 8, 2023 and decide to use `lima` instead of `docker`.
