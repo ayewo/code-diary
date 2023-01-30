@@ -1,3 +1,9 @@
+# January 29, 2023
+[Ask HN: What is the best source to learn Docker in 2023?](https://news.ycombinator.com/item?id=34563353) threw up some interesting links:
+* https://www.schutzwerk.com/en/blog/linux-container-intro/ 
+* https://jvns.ca/blog/2020/04/27/new-zine-how-containers-work/
+
+
 # January 9, 2023
 Came across this article: [Docker on MacOS is slow and how to fix it](https://www.paolomainardi.com/posts/docker-performance-macos/) via Changelog weekly newsletter on January 8, 2023 and decide to use `lima` instead of `docker`.
 
@@ -44,7 +50,3 @@ rm -rf e1fed960ebd29619676c7ab7535bc83f7fb2ad71739edb6fde4e17bce0b61a47
 rm -rf dd4613292b3a598687b9e5f97a294845661491c61e554435a27c6f6c691f8dd4
 ```
 
-# January 29, 2023
-[Ask HN: What is the best source to learn Docker in 2023?](https://news.ycombinator.com/item?id=34563353) threw up some interesting links:
-* https://www.schutzwerk.com/en/blog/linux-container-intro/ 
-* https://jvns.ca/blog/2020/04/27/new-zine-how-containers-work/
