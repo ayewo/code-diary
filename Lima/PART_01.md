@@ -294,7 +294,7 @@ EOF
 - https://github.com/lima-vm/lima/blob/8ac35c1fa5b101b277343c720a2b37899cbe8254/docs/images/lima-sequence-diagram.png
 - https://github.com/lima-vm/lima/blob/86bb0c634c504b5fbf9177f65eec7ce8ce9e1a79/README.md#L487
 - https://stackoverflow.com/questions/59296801/docker-compose-exit-code-is-137-when-there-is-no-oom-exception
-- https://www.redhat.com/sysadmin/cloud-swap - briefly considered adding a swap to a container; links to [pets vs cattle](https://cloudscaling.com/blog/cloud-computing/the-history-of-pets-vs-cattle/)
+- https://www.redhat.com/sysadmin/cloud-swap - briefly considered adding a swap to a container; TIL link to [pets vs cattle](https://cloudscaling.com/blog/cloud-computing/the-history-of-pets-vs-cattle/)
 - https://www.docker.com/blog/announcing-compose-v2-general-availability/ - distinction btw compose v1 vs compose v2
   - https://github.com/docker/compose/tree/v2 - compose v2: written in  Go; default branch on GitHub
   - https://github.com/docker/compose/tree/master - compose v1: written in Python; slower vs Go; harder to reuse in Go projects 
