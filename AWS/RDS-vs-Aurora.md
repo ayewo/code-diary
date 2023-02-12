@@ -1,11 +1,18 @@
 ## February 12, 2023
 ## The difference between RDS and Aurora
 
-This article [Aurora vs. RDS: An Engineer’s Guide to Choosing a Database](https://github.com/ayewo/code-diary/new/main) did a good job of explain the key differences between Amazon RDS and Amazon Aurora:
+This article [Aurora vs. RDS: An Engineer’s Guide to Choosing a Database](https://github.com/ayewo/code-diary/new/main) did a good job of explaining the key differences between [Amazon RDS](https://aws.amazon.com/rds/) and [Amazon Aurora](https://aws.amazon.com/rds/aurora/) and [Aurora Serverless](https://aws.amazon.com/rds/aurora/serverless). I decided to tabularize the differences to make it easier to scan:
 
-| Trait | Amazon RDS | Amazon Aurora | 
-|-------|-------------|--------------|
-| Design | Managed-database | Managed-database and cloud-native |
-| Node design | Same node for compute and storage | Different nodes for compute and storage |
-| Cluster size | Up to 5 replicas | Up to 15 replicas |
-| Database Flavors (Wire-compatibilty) | MySQL, PostgreSQL, MariaDB, SQL Server and Oracle | MySQL and Postgres only | 
+| Trait | Amazon RDS | Amazon Aurora | Amazon Aurora Serverless |
+|-------|-------------|--------------|--------------------------|
+| Most cost-effective use case | Sustained workloads | Sustained and spiky workloads | Spiky workloads |
+| Cluster split | Uses a symmetric split: compute and storage are integrated into each node | Uses an asymmetric split: compute and storage are split across different nodes | Similar to Aurora |
+| Cache replication | Synchronous | Asynchronous | Similar to Aurora |
+| Replication traffic | Flows between all nodes | Flows between storage nodes only | Similar to Aurora |
+| Replica size | Up to 5 replicas | Up to 15 replicas | Similar to Aurora |
+| Database flavors (Wire-compatibilty) | Five: MySQL, PostgreSQL, MariaDB, SQL Server and Oracle | Two: MySQL and Postgres only | Similar to Aurora |
+
+
+
+
+
