@@ -174,7 +174,7 @@ rm -rf /tmp/nuke
 Start from scratch with the latest version of `lima` so I can learn why a working `docker-compose.yml` is failing with `lima`.
 
 ## 1st attempt
-**Step 1**
+### Step 1
 ```bash
 lima nerdctl compose up
 
@@ -192,7 +192,7 @@ INFO[0000] Creating container tc-online-review_tc-fakesmtp_1
 FATA[0000] currently StdinOpen(-i) and Tty(-t) should be same
 ```
 
-**Step 2: Isolating the error**
+### Step 2: Isolating the error
 ```bash
 lima nerdctl compose up tc-informix --remove-orphans
 WARN[0000] default network named "bridge" does not have an internal nerdctl ID or nerdctl-managed config file, it was most likely NOT created by nerdctl
@@ -202,7 +202,7 @@ INFO[0000] Creating container tc-online-db
 FATA[0000] currently StdinOpen(-i) and Tty(-t) should be same
 ```
 
-**Step 3: view network list**
+### Step 3: view network list
 ```bash
 lima nerdctl network list
 NETWORK ID    NAME                        FILE
@@ -212,7 +212,7 @@ NETWORK ID    NAME                        FILE
               none
 ```
 
-**Step 4: view the network config**
+### Step 4: view the network config
 ```bash
 lima nerdctl network inspect --mode=native bridge
 
@@ -268,7 +268,7 @@ lima nerdctl network inspect --mode=native bridge
 ]
 ```
 
-**Step 5: there are small differences between the default `bridge` network and `tc-online-review_default`**
+### Step 5: there are small differences between the default `bridge` network and `tc-online-review_default`
 ```bash
 lima nerdctl network inspect --mode=native tc-online-review_default
 
@@ -326,7 +326,7 @@ lima nerdctl network inspect --mode=native tc-online-review_default
     }
 ]
 ```
-**Step 6: check the creation date of the network config**
+### Step 6: check the creation date of the network config
 ```bash
 lima ls -l /home/mac.linux/.config/cni/net.d/
 total 8
@@ -334,7 +334,7 @@ total 8
 -rw-r--r-- 1 mac mac 873 Oct  1 09:19 nerdctl-tc-online-review_default.conflist
 ```
 
-**Step 7: re-create a fresh `lima` VM and track the files that are touched using `watchman` (from Facebook)**
+### Step 7: re-create a fresh `lima` VM and track the files that are touched using `watchman` (from Facebook)
 ```bash
 brew install watchman
 ==> Fetching dependencies for watchman: cmake, cpptoml, googletest, libssh2, rust, icu4c, boost, double-conversion, fmt, gflags, glog, folly, edencommon, libsodium, fizz, wangle, fbthrift and fb303
@@ -416,7 +416,7 @@ watchman -- trigger ~/.lima/default log '*.*' -- echo
 Apparently, `watchman` is not simple to use so aborting.
 
 
-**Step 8: install `fswatch` as `watchman` (from Facebook) is too enterprisey**
+### Step 8: install `fswatch` as `watchman` (from Facebook) is too enterprisey
 ```bash
 brew install fswatch
 ==> Fetching fswatch
@@ -432,7 +432,7 @@ Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.
 Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).
 ```
 
-**Set up `fswatch`**
+### Set up `fswatch`
 ```bash
 # fswatch -o ~/.lima/default | xargs -n1 -I{} echo {}
 fswatch -0 -tvr ~/homebrew/Cellar/qemu/ ~/.lima/default ~/Library/Caches/lima/download/by-url-sha256 | xargs -0 -n1 -I {} echo {}
@@ -450,7 +450,7 @@ Sat Jan  7 15:18:55 2023 /Users/mac/.lima/default/ga.sock
 Sat Jan  7 15:18:55 2023 /Users/mac/.lima/default/ssh.sock
 ```
 
-**Small detour to using `lsof` for the same purpose of tracking open file handles**
+### Small detour to using `lsof` for the same purpose of tracking open file handles
 ```bash
 # lsof -i :25; lsof -i tcp; lsof -i udp;
 # list open files for processes named "lima", "limactl" & "qemu"; defaults to 15 seconds of polling
@@ -471,7 +471,7 @@ lsof -c lima -c limactl -c qemu -r 5
 /Users/mac/homebrew/Cellar/qemu/7.2.0/bin/qemu-system-x86_64 -m 10240 -cpu host -machine q35,accel=hvf -smp 4,sockets=1,cores=4,threads=1 -drive if=pflash,format=raw,readonly=on,file=/Users/mac/homebrew/share/qemu/edk2-x86_64-code.fd -boot order=c,splash-time=0,menu=on -drive file=/Users/mac/.lima/default/diffdisk,if=virtio,discard=on -cdrom /Users/mac/.lima/default/cidata.iso -netdev user,id=net0,net=192.168.5.0/24,dhcpstart=192.168.5.15,hostfwd=tcp:127.0.0.1:60022-:22 -device virtio-net-pci,netdev=net0,mac=52:55:55:72:c3:fe -device virtio-rng-pci -display none -device virtio-vga -device virtio-keyboard-pci -device virtio-mouse-pci -device qemu-xhci,id=usb-bus -parallel none -chardev socket,id=char-serial,path=/Users/mac/.lima/default/serial.sock,server=on,wait=off,logfile=/Users/mac/.lima/default/serial.log -serial chardev:char-serial -chardev socket,id=char-qmp,path=/Users/mac/.lima/default/qmp.sock,server=on,wait=off -qmp chardev:char-qmp -name lima-default -pidfile /Users/mac/.lima/default/qemu.pid 
 ```
 
-**Explore inside the `lima` VM to get a sense of how networking is done:**
+### Explore inside the `lima` VM to get a sense of how networking is done:
 ```bash
 # Ctrl+T 
 lima
@@ -500,7 +500,7 @@ default via 192.168.5.2 dev eth0 proto dhcp src 192.168.5.15 metric 100
 192.168.5.3 dev eth0 proto dhcp scope link src 192.168.5.15 metric 100
 ```
 
-**List the file paths of the config used by `nerdctl`:**
+### List the file paths of the config used by `nerdctl`:
 ```bash
 nerdctl help
 ->
@@ -509,7 +509,7 @@ nerdctl help
 /home/mac.linux/.local/share/nerdctl/1935db59/volumes/default/
 ```
 
-**List the existing networks**
+### List the existing networks
 ```bash
 nerdctl network list
 ->
@@ -520,12 +520,12 @@ NETWORK ID    NAME                        FILE
               none
 ```
 
-**Remove the existing `tc-online-review_default` network bridge created when `lima` failed to start the `docker-compose.yml`:**
+### Remove the existing `tc-online-review_default` network bridge created when `lima` failed to start the `docker-compose.yml`:
 ```bash
 nerdctl network rm tc-online-review_default
 ```
 
-**Re-attempt to launch individual containers specified in `docker-compose.yml` using `lima`:**
+### Re-attempt to launch individual containers specified in `docker-compose.yml` using `lima`
 ```bash
 lima nerdctl compose up tc-informix --remove-orphans  # same error
 lima nerdctl compose up tc-cache --remove-orphans # works
@@ -541,7 +541,7 @@ With open file handles tracking, I noticed the following file handles were open 
   $PREFIX/8bed4cec6b019de5d3c7ae6b28d9f22f6a871b592f8cba9ae0aa4babba9f7df6-json.log  <-- stdout is written here
 ```
 
-**List container images:**
+### List container images:
 ```bash
 nerdctl images
 REPOSITORY           TAG       IMAGE ID        CREATED         PLATFORM       SIZE         BLOB SIZE
@@ -551,7 +551,7 @@ tc-online-review     latest    b9bfe1e287b2    3 months ago    linux/amd64    65
 munkyboy/fakesmtp    latest    190e5ae5a056    3 months ago    linux/amd64    351.2 MiB    143.0 MiB
 ```
 
-**Export container images locally to save on network bandwidth:**
+### Export container images locally to save on network bandwidth:
 ```bash
 nerdctl save redis:3.2.10 -o tc-redis.tar.gz
 nerdctl save tc-informix:latest -o tc-informix.tar.gz
@@ -563,7 +563,7 @@ mv tc-* /Users/mac/tc/lima
 ```
 Following the discussion in [Prevent double-creation of nerdctl default network. #1538](https://github.com/containerd/nerdctl/pull/1538) best path forward is to recreate the lima VM so I decided to abort the investigation.
 
-**Re-creating a fresh `lima` VM from scratch**
+### Re-creating a fresh `lima` VM from scratch
 ```bash
 limactl rm -f $(limactl ls -q)
 limactl start default
@@ -608,7 +608,7 @@ INFO[3695] READY. Run `lima` to open the shell.
 ---
 
 # January 8, 2023
-**Start only the `tc-cache` container**
+### Start only the `tc-cache` container
 ```bash
 cd /Users/mac/tc/tc-online-review
 lima nerdctl compose up tc-cache --remove-orphans
@@ -657,7 +657,7 @@ tc-cache_1 |1:M 08 Jan 10:43:24.291 * The server is now ready to accept connecti
 ```
 
 
-**Then look around inside the `lima` VM**
+### Then look around inside the `lima` VM
 ```bash
 # Ctrl+T
 lima
@@ -670,7 +670,7 @@ NETWORK ID      NAME                        FILE
                 none
 ```
 
-**Notice the default network config file `bridge` and `tc-online-review_default` are nearly identical unlike in PART 01**
+### Notice the default network config file `bridge` and `tc-online-review_default` are nearly identical unlike in PART 01
 ```bash
 diff /home/mac.linux/.config/cni/net.d/nerdctl-bridge.conflist /home/mac.linux/.config/cni/net.d/nerdctl-tc-online-review_default.conflist
 3,4c3,4
@@ -695,7 +695,7 @@ diff /home/mac.linux/.config/cni/net.d/nerdctl-bridge.conflist /home/mac.linux/.
 >               "gateway": "10.4.1.1",
 >               "subnet": "10.4.1.0/24"
 ```
-**View process activity inside the `lima` VM**
+### View process activity inside the `lima` VM
 ```bash
 ps auxf
 
@@ -715,20 +715,20 @@ mac         4068  0.0  0.0   9284  5616 pts/1    Ss   10:49   0:00          \_ /
 mac         4129  0.0  0.0  11808  4164 pts/1    R+   10:56   0:00              \_ ps auxf
 ```
 
-**Install midnight commander `mc` to explore the filesystem**
+### Install midnight commander `mc` to explore the filesystem
 ```bash
 sudo apt install mc
 cd /home/mac.linux/.local/share/nerdctl/1935db59 && mc
 cd /home/mac.linux/.local/share/containerd
 ```
 
-**Watch for filesystem activity inside the `lima` VM**
+### Watch for filesystem activity inside the `lima` VM
 ```bash
 ## Ctrl+T
 lsof -c nerdctl -c containerd -r 2 > /tmp/lima/1.log && tail -f /tmp/lima/1.log
 ```
 
-**Restore the larger container images**
+### Restore the larger container images
 ```bash
 ## Ctrl+T
 ## Restore the remaining container images
