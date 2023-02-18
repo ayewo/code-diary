@@ -15,8 +15,7 @@ Force user re-authentication for `sudo` with [^1]:
 sudo -k
 ```
 
-
 ---
-[^1]: February 17, 2023 via [Sloth](https://github.com/sveinbjornt/Sloth/issues/22) -> [Balena](https://github.com/jorangreef/sudo-prompt/issues/53) -> [sudo-prompt](https://github.com/jorangreef/sudo-prompt/blob/c3cc31a51bc50fe21fadcbf76a88609c0c77026f/README.md#invalidating-the-timestamp)
+[^1]: February 17, 2023 via [Sloth](https://github.com/sveinbjornt/Sloth/issues/22) -> [Balena](https://github.com/jorangreef/sudo-prompt/issues/53) -> [sudo-prompt](https://github.com/jorangreef/sudo-prompt/blob/c3cc31a51bc50fe21fadcbf76a88609c0c77026f/README.md#invalidating-the-timestamp). Along the [way](https://github.com/balena-io/etcher/issues/2644#issuecomment-619969067) I learned that Linux has a subsystem for managing device events called `udev` that allows automation. Scripts can be triggered when a specific device is plugged in. This was a good primer: [An introduction to Udev: The Linux subsystem for managing device events](https://opensource.com/article/18/11/udev).
 
 [^2]: February 18, 2023
