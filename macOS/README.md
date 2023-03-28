@@ -33,8 +33,8 @@ The [repo](https://github.com/SuprHackerSteve/Crescendo/tree/836ca3402b24564a3ec
 
 ## Password Database
 macOS offers three[^3] different UIs for viewing and managing the passwords in your password database.
-* Keychain Access
-* System Settings -> Passwords (example [command](https://news.ycombinator.com/item?id=35331649) to open it directly[^4])
+* Keychain Access (CLI command to open it directly[^4])
+* System Settings -> Passwords ([CLI command](https://news.ycombinator.com/item?id=35331649) to open it directly[^5])
 * Safari Browser -> Preferences -> Passwords (example [AppleScript](https://news.ycombinator.com/item?id=35332262) to open it directly)
 
 ---
@@ -44,5 +44,7 @@ macOS offers three[^3] different UIs for viewing and managing the passwords in y
 
 [^3]: [*Apple passwords deserve an app*](https://news.ycombinator.com/item?id=35329950), March 28, 2023 via [HN](https://news.ycombinator.com/item?id=35330427)
 
-[^4]: -ditto- via [HN](https://news.ycombinator.com/item?id=35331649): `open /Library/Apple/System/Library/CoreServices/SafariSupport.bundle/Contents/PreferencePanes/Passwords.prefPane`
+[^4]: Apple uses indirection for apps paths under `Applications/Utilities`; dragging from Finder into Terminal revealed the real path is prefixed with `/System/...`: `open /System/Applications/Utilities/Keychain\ Access.app` 
+
+[^5]: -ditto- via [HN](https://news.ycombinator.com/item?id=35331649): `open /Library/Apple/System/Library/CoreServices/SafariSupport.bundle/Contents/PreferencePanes/Passwords.prefPane`
 
