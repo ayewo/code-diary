@@ -33,9 +33,9 @@ The [repo](https://github.com/SuprHackerSteve/Crescendo/tree/836ca3402b24564a3ec
 
 ## Password Database
 macOS offers three[^3] different UIs for viewing and managing the passwords in your password database.
-* Keychain Access (CLI command to open it directly[^4])
-* System Settings -> Passwords ([CLI command](https://news.ycombinator.com/item?id=35331649) to open it directly[^5])
-* Safari Browser -> Preferences -> Passwords (example [AppleScript](https://news.ycombinator.com/item?id=35332262) to open it directly)
+* Keychain Access (CLI command to open it directly on macOS 12.6[^4])
+* System Settings -> Passwords ([CLI command](https://news.ycombinator.com/item?id=35331649) to open it directly on macOS 12.6[^5])
+* Safari Browser -> Preferences -> Passwords (example [AppleScript](https://news.ycombinator.com/item?id=35332262) to open it directly--not tested)
 
 ---
 [^1]: February 17, 2023 via [HN](https://news.ycombinator.com/item?id=34828012) -> [Sloth](https://github.com/sveinbjornt/Sloth/issues/22) -> [Balena](https://github.com/jorangreef/sudo-prompt/issues/53) -> [sudo-prompt](https://github.com/jorangreef/sudo-prompt/blob/c3cc31a51bc50fe21fadcbf76a88609c0c77026f/README.md#invalidating-the-timestamp). Along the [way](https://github.com/balena-io/etcher/issues/2644#issuecomment-619969067) I learned that Linux has a subsystem for managing device events called `udev` that allows automation. Scripts can be triggered when a specific device is plugged in. This was a good primer: [An introduction to Udev: The Linux subsystem for managing device events](https://opensource.com/article/18/11/udev).
