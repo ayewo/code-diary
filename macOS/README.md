@@ -37,6 +37,11 @@ macOS offers three[^3] different UIs for viewing and managing the passwords in y
 * System Settings -> Passwords ([CLI command](https://news.ycombinator.com/item?id=35331649) to open it directly on macOS 12.6[^5])
 * Safari Browser -> Preferences -> Passwords (example [AppleScript](https://news.ycombinator.com/item?id=35332262) to open it directly--not tested)
 
+## [System Integrity Protection (SIP)](https://developer.apple.com/documentation/security/disabling_and_enabling_system_integrity_protection)
+Overhead on the Internet[^6]:
+> iOS apps don't work with SIP disabled.
+
+
 ---
 [^1]: February 17, 2023 via [HN](https://news.ycombinator.com/item?id=34828012) -> [Sloth](https://github.com/sveinbjornt/Sloth/issues/22) -> [Balena](https://github.com/jorangreef/sudo-prompt/issues/53) -> [sudo-prompt](https://github.com/jorangreef/sudo-prompt/blob/c3cc31a51bc50fe21fadcbf76a88609c0c77026f/README.md#invalidating-the-timestamp). Along the [way](https://github.com/balena-io/etcher/issues/2644#issuecomment-619969067) I learned that Linux has a subsystem for managing device events called `udev` that allows automation. Scripts can be triggered when a specific device is plugged in. This was a good primer: [An introduction to Udev: The Linux subsystem for managing device events](https://opensource.com/article/18/11/udev).
 
@@ -48,3 +53,4 @@ macOS offers three[^3] different UIs for viewing and managing the passwords in y
 
 [^5]: -ditto- via [HN](https://news.ycombinator.com/item?id=35331649): `open /Library/Apple/System/Library/CoreServices/SafariSupport.bundle/Contents/PreferencePanes/Passwords.prefPane`
 
+[^6]: [The day Windows died](https://news.ycombinator.com/item?id=35415758), April 3, 2023 via [from](https://news.ycombinator.com/item?id=35416683)
