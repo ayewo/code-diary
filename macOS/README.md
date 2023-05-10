@@ -38,7 +38,7 @@ macOS offers three[^3] different UIs for viewing and managing the passwords in y
 * Safari Browser -> Preferences -> Passwords (example [AppleScript](https://news.ycombinator.com/item?id=35332262) to open it directly--not tested)
 
 ## [System Integrity Protection (SIP)](https://developer.apple.com/documentation/security/disabling_and_enabling_system_integrity_protection)
-Overhead on the Internet[^6]:
+Overheard on the Internet[^6]:
 > iOS apps don't work with SIP disabled.
 
 
