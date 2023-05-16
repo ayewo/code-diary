@@ -1,4 +1,11 @@
 # macOS: Random Tips
+## `networkQuality` tool
+This HN thread [The networkQuality tool on macOS ](https://news.ycombinator.com/item?id=35936999) led to some interesting tips and tools.
+* `networkQuality` [Swift and Go implementation](https://news.ycombinator.com/item?id=35937295);
+* Useful list of tools inside [`/usr/sbin`](https://news.ycombinator.com/item?id=35937359);
+* Miscellaneous [CLI and GUI tools](https://news.ycombinator.com/item?id=35937763). 
+
+
 ## Invalidate `sudo` timestamp
 Force user re-authentication for `sudo` with [^1]:
 ```bash
