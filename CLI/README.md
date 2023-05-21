@@ -1,4 +1,8 @@
 # Miscellaneous Tips
+## Progress Reporting in CLI Tools
+TIL of [`progress`](https://github.com/Xfennec/progress) which can report progress for long running commands the `coreutils` package (`cp`, `mv`, `dd`, `tar`, `gzip/gunzip`, `cat`, etc) on Linux via [HN - Linux tool to show progress for cp, mv, dd](https://news.ycombinator.com/item?id=36000407). The [discussion](https://news.ycombinator.com/item?id=36001812) also yielded another progress monitoring tool like `pv` (pipe viewer) and a other neat tool for network comms: `socat` (Socket cat).
+
+
 ## Python Version Version?
 I came across `python --version --version` in some script (can't remember where now) so I decided to check what it did:
 ```bash
