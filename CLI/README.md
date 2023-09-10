@@ -22,7 +22,7 @@ To trigger the OOM killer on Linux execute `tail /dev/zero`. Hat tip to Danny Li
 While creating a handful of `bash` shell `alias`es, I created an alias for `screen -ls` as `sls` and accidentally learned of the existence of `ss` which the `man` page calls: "ss - another utility to investigate sockets". It's described as "ss is used to dump socket statistics. It allows showing information similar to netstat.  It can display more TCP and state information than other tools."
 
 <details>
-<summary>Default output from <code>ss</code>code> (no args) looks informative (some entries were truncated)</summary>
+<summary>Default output from <code>ss</code> (no args) looks informative (some entries were truncated)</summary>
 <pre>
 Netid          State           Recv-Q          Send-Q                                                                                          Local Address:Port                            Peer Address:Port              Process
 u_str          ESTAB           0               0                                                                                                           * 19509                                      * 19075
