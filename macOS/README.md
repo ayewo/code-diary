@@ -48,8 +48,10 @@ macOS offers three[^3] different UIs for viewing and managing the passwords in y
 Overheard on the Internet[^6]:
 > iOS apps don't work with SIP disabled.
 
-## Report the Number of CPU Cores on your Mac
-Use `sysctl -n hw.ncpu`[^7].
+## How many CPU Cores are on your Mac?
+While reading [1 billion row challenge in SQL and Oracle Database](https://geraldonit.com/2024/01/31/1-billion-row-challenge-in-sql-and-oracle-database/) I was curious how many cores I had on my Intel MBP. 
+
+I used `sysctl -n hw.ncpu`[^7].
 ```bash
 mac@13-inch-MacBook-Pro ~ % sysctl -n hw.ncpu
 8
