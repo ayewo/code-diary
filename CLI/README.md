@@ -240,4 +240,5 @@ tcp            ESTAB           0               0                                
 </pre>
 </details>
 
-
+## CLI Benchmarking Tool
+[`hyperfine`](https://github.com/sharkdp/hyperfine) is a benchmarking tool written in Rust for comparing multiple runs of the same tool or different tools. Saw it used [here](https://github.com/gunnarmorling/1brc/discussions/569).
