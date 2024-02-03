@@ -1,6 +1,6 @@
 # Miscellaneous Tips
 ## Progress Reporting in CLI Tools
-TIL of [`progress`](https://github.com/Xfennec/progress) which can report progress for long running commands the `coreutils` package (`cp`, `mv`, `dd`, `tar`, `gzip/gunzip`, `cat`, etc) on Linux via [HN - Linux tool to show progress for cp, mv, dd](https://news.ycombinator.com/item?id=36000407). The [discussion](https://news.ycombinator.com/item?id=36001812) also yielded another progress monitoring tool like `pv` (pipe viewer) and a other neat tool for network comms: `socat` (Socket cat).
+TIL of [`progress`](https://github.com/Xfennec/progress) which can report progress for long running commands from the `coreutils` package (`cp`, `mv`, `dd`, `tar`, `gzip/gunzip`, `cat`, etc) on Linux via [HN - Linux tool to show progress for cp, mv, dd](https://news.ycombinator.com/item?id=36000407). The [discussion](https://news.ycombinator.com/item?id=36001812) also yielded another progress monitoring tool like `pv` (pipe viewer) and a other neat tool for network comms: `socat` (Socket cat).
 
 
 ## Python Version Version?
@@ -239,6 +239,40 @@ tcp            ESTAB           0               0                                
 tcp            ESTAB           0               0                                                                                                   127.0.0.1:40568                              127.0.0.1:5173
 </pre>
 </details>
+
+## Find Files with UTF-8 or ASCII Encoding
+TIL of some neat CLI options to the `find` & `file` commands and learnt of `iconv` via [HN](https://news.ycombinator.com/item?id=39217149): [My favourite Git commit](https://dhwthompson.com/2019/my-favourite-git-commit):
+```bash
+# Where $folder is a Rails application folder
+cd $folder/
+
+find . -type f -exec file --mime {} \+ | grep utf
+./app/mailers/application_mailer.rb:                                                      text/x-ruby; charset=utf-8
+./app/views/root_mailer/mailer.html.erb:                                                  text/html; charset=utf-8
+./app/views/root_mailer/mailer.text.erb:                                                  text/plain; charset=utf-8
+./RESPONSES.md:                                                                           text/plain; charset=utf-8
+...
+
+find . -type f -exec file --mime {} \+ | grep us-ascii
+...
+./bin/rails:                                                                              text/x-ruby; charset=us-ascii
+./config/routes.rb:                                                                       text/plain; charset=us-ascii
+./config/locales/en.yml:                                                                  text/plain; charset=us-ascii
+./config/cable.yml:                                                                       text/plain; charset=us-ascii
+./config/environments/production.rb:                                                      text/plain; charset=us-ascii
+./config/environments/development.rb:                                                     text/plain; charset=us-ascii
+...
+
+# Let's pick "./RESPONSES.md" for conversion from utf-8 to us-ascii using iconv:
+file --mime ./RESPONSES.md
+./RESPONSES.md: text/plain; charset=utf-8
+
+iconv -f UTF8 -t US-ASCII ./RESPONSES.md 2>&1 | tail -n5
+...
+
+file --mime ./RESPONSES.md                              
+./RESPONSES.md: text/plain; charset=us-ascii
+```
 
 ## CLI Benchmarking Tool
 [`hyperfine`](https://github.com/sharkdp/hyperfine) is a benchmarking tool written in Rust for comparing multiple runs of the same tool or different tools. Saw it used [here](https://github.com/gunnarmorling/1brc/discussions/569).
