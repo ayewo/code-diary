@@ -275,4 +275,16 @@ file --mime ./RESPONSES.md
 ```
 
 ## CLI Benchmarking Tool
-[`hyperfine`](https://github.com/sharkdp/hyperfine) is a benchmarking tool written in Rust for comparing multiple runs of the same tool or different tools. Saw it used [here](https://github.com/gunnarmorling/1brc/discussions/569).
+TIL of [`hyperfine`](https://github.com/sharkdp/hyperfine) on Feb 3, 2024. hyperfine is a benchmarking tool written in Rust for comparing multiple runs of the same tool or different tools. Saw it used [here](https://github.com/gunnarmorling/1brc/discussions/569).
+
+For consistent benchmarks on Linux their README mentions to clear the hard disk cache before each timing run:
+```bash
+sync; echo 3 | sudo tee /proc/sys/vm/drop_caches
+```
+Just days earlier (January 30, 2024), I encountered that exact command in this excellent article on the [Linux page cache](https://biriukov.dev/docs/page-cache/1-prepare-environment-for-experiments/). 
+
+---
+
+[^1]: <empty>
+
+[^2]: <empty>
