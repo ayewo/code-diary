@@ -48,6 +48,34 @@ macOS offers three[^3] different UIs for viewing and managing the passwords in y
 Overheard on the Internet[^6]:
 > iOS apps don't work with SIP disabled.
 
+## Report the Number of CPU Cores on your Mac
+Use `sysctl -n hw.ncpu`[^7].
+```bash
+mac@13-inch-MacBook-Pro ~ % sysctl -n hw.ncpu
+8
+```
+So my MBP has 8 cores. **But**, the `sysctl -a` has more info:
+```bash
+hw.ncpu: 8
+...
+hw.activecpu: 8
+...
+hw.physicalcpu: 4
+hw.physicalcpu_max: 4
+hw.logicalcpu: 8
+hw.logicalcpu_max: 8
+...
+hw.targettype: Mac
+hw.cputhreadtype: 1
+...
+```
+
+To identify what generation of Intel® Core™ processor came with your Mac, use `sysctl -a | grep machdep.cpu.brand_string`[^8].
+```bash
+mac@13-inch-MacBook-Pro ~ % sysctl -a | grep machdep.cpu.brand_string
+machdep.cpu.brand_string: Intel(R) Core(TM) i5-1038NG7 CPU @ 2.00GHz
+```
+In my case, the [`Intel(R) Core(TM) i5-1038NG7`](https://www.intel.com/content/www/us/en/products/sku/196594/intel-core-i51038ng7-processor-6m-cache-up-to-3-80-ghz/specifications.html) in the output implies that the processor is [10th generation](https://www.intel.com/content/www/us/en/support/articles/000032203/processors/intel-core-processors.html) because the number 10 is listed after i5.
 
 ---
 [^1]: February 17, 2023 via [HN](https://news.ycombinator.com/item?id=34828012) -> [Sloth](https://github.com/sveinbjornt/Sloth/issues/22) -> [Balena](https://github.com/jorangreef/sudo-prompt/issues/53) -> [sudo-prompt](https://github.com/jorangreef/sudo-prompt/blob/c3cc31a51bc50fe21fadcbf76a88609c0c77026f/README.md#invalidating-the-timestamp). Along the [way](https://github.com/balena-io/etcher/issues/2644#issuecomment-619969067) I learned that Linux has a subsystem for managing device events called `udev` that allows automation. Scripts can be triggered when a specific device is plugged in. This was a good primer: [An introduction to Udev: The Linux subsystem for managing device events](https://opensource.com/article/18/11/udev).
@@ -61,3 +89,7 @@ Overheard on the Internet[^6]:
 [^5]: -ditto- via [HN](https://news.ycombinator.com/item?id=35331649): `open /Library/Apple/System/Library/CoreServices/SafariSupport.bundle/Contents/PreferencePanes/Passwords.prefPane`
 
 [^6]: [The day Windows died](https://news.ycombinator.com/item?id=35415758), April 3, 2023 via [from](https://news.ycombinator.com/item?id=35416683)
+
+[^7]: February 3, 2024 via [How to check the status of hyper-threading in macOS](https://discussions.apple.com/thread/250367139?sortBy=best) -> [macincloud.com](https://support.macincloud.com/support/solutions/articles/8000087401-how-can-i-check-the-number-of-cpu-cores-on-a-mac)
+
+[^8]: -ditto- via https://www.intel.com/content/www/us/en/support/articles/000006059/processors.html 
