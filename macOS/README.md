@@ -79,6 +79,32 @@ machdep.cpu.brand_string: Intel(R) Core(TM) i5-1038NG7 CPU @ 2.00GHz
 ```
 In my case, the [`Intel(R) Core(TM) i5-1038NG7`](https://www.intel.com/content/www/us/en/products/sku/196594/intel-core-i51038ng7-processor-6m-cache-up-to-3-80-ghz/specifications.html) in the output implies that the processor is [10th generation](https://www.intel.com/content/www/us/en/support/articles/000032203/processors/intel-core-processors.html) because the number 10 is listed after i5.
 
+## How to get Eclipse Corrosion working on your Mac?
+I wanted to try out Eclipse Corrosion which is an IDE that can debug Rust programs using `rust-gdb`. It's based on the slowly dying Eclipse IDE platform from about 20 years ago.
+
+I kept getting an error on double-click that the app was damaged so I manually extracted the `Eclipse.app` from the download bundle then cross-checked the file hash, before remembering that perhaps the app might have been quarantined by Gatekeeper.
+
+* Eclipse Corrosion [download page](https://download.eclipse.org/corrosion/releases/latest/products/); 
+* This [interstitial page](https://www.eclipse.org/downloads/download.php?file=/corrosion/releases/latest/products/eclipseide-rust-1.2.4-macosx.cocoa.x86_64.tar.gz) shows the file hash (in `SHA-512`).
+```bash
+# file hash in SHA-512:
+189f36c81bb4cc53cee160240006d2bd62400b2e414dab4a82d69424da1dc8644fba62aa546e08ac723562f50c5952bfc221ea9aff13ede26b7477117e579a72  eclipseide-rust-1.2.4-macosx.cocoa.x86_64.tar.gz
+
+# confirm file hash using `shasum`:
+shasum -a 512 ~/Downloads/eclipseide-rust-1.2.4-macosx.cocoa.x86_64.tar.gz 
+189f36c81bb4cc53cee160240006d2bd62400b2e414dab4a82d69424da1dc8644fba62aa546e08ac723562f50c5952bfc221ea9aff13ede26b7477117e579a72  ~/Downloads/eclipseide-rust-1.2.4-macosx.cocoa.x86_64.tar.gz
+
+cd ~/Downloads/
+tar xf eclipseide-rust-1.2.4-macosx.cocoa.x86_64.tar.gz 
+open Eclipse.app
+
+# fails to open. Complains about the app being damaged. Had to remove what is likely a quarantine flag by macOS
+xattr -d com.apple.quarantine Eclipse.app 
+
+# works!
+open Eclipse.app
+```
+
 ---
 [^1]: February 17, 2023 via [HN](https://news.ycombinator.com/item?id=34828012) -> [Sloth](https://github.com/sveinbjornt/Sloth/issues/22) -> [Balena](https://github.com/jorangreef/sudo-prompt/issues/53) -> [sudo-prompt](https://github.com/jorangreef/sudo-prompt/blob/c3cc31a51bc50fe21fadcbf76a88609c0c77026f/README.md#invalidating-the-timestamp). Along the [way](https://github.com/balena-io/etcher/issues/2644#issuecomment-619969067) I learned that Linux has a subsystem for managing device events called `udev` that allows automation. Scripts can be triggered when a specific device is plugged in. This was a good primer: [An introduction to Udev: The Linux subsystem for managing device events](https://opensource.com/article/18/11/udev).
 
