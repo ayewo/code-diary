@@ -1,7 +1,7 @@
 ## February 12, 2023
 ## The difference between RDS and Aurora
 
-This article [Aurora vs. RDS: An Engineer’s Guide to Choosing a Database](https://github.com/ayewo/code-diary/new/main) did a good job of explaining the key differences between [Amazon RDS](https://aws.amazon.com/rds/) and [Amazon Aurora](https://aws.amazon.com/rds/aurora/) and [Aurora Serverless](https://aws.amazon.com/rds/aurora/serverless). I decided to tabularize the differences to make it easier to scan:
+This article [Aurora vs. RDS: An Engineer’s Guide to Choosing a Database](https://www.lastweekinaws.com/blog/aurora-vs-rds-an-engineers-guide-to-choosing-a-database/) did a good job of explaining the key differences between [Amazon RDS](https://aws.amazon.com/rds/) and [Amazon Aurora](https://aws.amazon.com/rds/aurora/) and [Aurora Serverless](https://aws.amazon.com/rds/aurora/serverless). I decided to tabularize the differences to make it easier to scan:
 
 | Trait | Amazon RDS | Amazon Aurora | Amazon Aurora Serverless |
 |-------|-------------|--------------|--------------------------|
