@@ -283,6 +283,23 @@ sync; echo 3 | sudo tee /proc/sys/vm/drop_caches
 ```
 Just days earlier (January 30, 2024), I encountered that exact command in this excellent article on the [Linux page cache](https://biriukov.dev/docs/page-cache/1-prepare-environment-for-experiments/). 
 
+## See all versions of `time` installed on your system ...
+This SO [comment](https://stackoverflow.com/questions/385408/get-program-execution-time-in-the-shell#comment86233029_385418) pointed me to a useful TIL:
+`type -a time`:
+```bash
+# on Linux
+type -a time
+time is a shell keyword
+time is /usr/bin/time
+time is /bin/time
+
+# on macOS (zsh)
+type -a time
+time is a reserved word
+time is /usr/bin/time
+```
+
+
 ---
 
 [^1]: <empty>
