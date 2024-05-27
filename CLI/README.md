@@ -299,6 +299,15 @@ time is a reserved word
 time is /usr/bin/time
 ```
 
+## Set the birth time on file creation
+I learnt of the `-t` flag to the `touch` command from this HN [comment](https://news.ycombinator.com/item?id=40490379):
+```bash
+touch -t 201101020304 /tmp/old-file
+
+ll /tmp/old-file 
+-rw-r--r--  1 mac  wheel  0 Jan  2  2011 /tmp/old-file
+```
+Tested on the macOS filesystem (APFS). You can check your mac's filesystem with `diskutil list`.
 
 ---
 
